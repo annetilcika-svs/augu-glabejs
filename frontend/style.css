@@ -1,0 +1,45 @@
+body {
+  background-image: url("https://media.istockphoto.com/id/1190016215/vector/vector-isolated-ginkgo-illustration-element-leaf-plant-botanical-garden-foliage-black-and.jpg?s=612x612&w=0&k=20&c=ugsey2zQCt3-wHzmIB3uNCco4Qee3T3Shwysfy46OXQ=");
+}
+
+#lielaKaste {
+  width: 95%;
+  max-width: 1400px;
+  height: 90%;
+  border-radius: 15px;
+}
+
+#kreisaKaste {
+  padding: 1%;
+}
+
+#bilde {
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  max-width: 300px;
+  min-width: 120px;
+}
+
+.linija {
+  width: 1px;
+  background-color: #000000;
+  height: 100%;
+}
+
+#labaKaste {
+  background-color: #dbeaf9;
+  padding: 1%;
+}
+
+.dienuSadalijums {
+  display: grid;
+  gap: 5%;
+}
+
+.day-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
