@@ -27,16 +27,16 @@ app.post("/ask-ai", async (req, res) => {
   try {
     const saite = req.body.saite;
     const problema = req.body.problema;
-
+    //pagaidām nedarbojas izvērtēšana vai augam patiešām vajag palīdzību vai nē, vajag uzrakstīt kautkādus kritērijus kuriem viņam sekot
     const response = await client.responses.create({
       model: "gpt-5.4-nano",
-      instructions: `Tu esi augu kopšanas eksperts. 
+      instructions: `Tu esi augu un augu kopšanas eksperts. 
 Atbildi TIKAI JSON formātā. 
 Struktūra: {
-  "nosaukums": "TIKAI nosaukums ",
+"palidziba": "vajag" vai "nevajag",
+  "nosaukums": "TIKAI Auga nosaukums",
   "apraksts": "Īss apraksts(viens vai divi teikumi), kas ar augu ir netā",
-  "palidziba": "vajag vai nevajag (viens vārds)",
-  "plans": ["1. diena", "2. diena", "3. diena", "4. diena"]
+  "plans": ["...", "...", "...", "...", "...", "..."]
 }`,
       input: [
         {

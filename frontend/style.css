@@ -29,9 +29,18 @@ body {
 #labaKaste {
   background-color: #dbeaf9;
   padding: 1%;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .dienuSadalijums {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding-bottom: 20px;
+}
+
+#aprakstsKaste {
   display: grid;
   gap: 5%;
 }
