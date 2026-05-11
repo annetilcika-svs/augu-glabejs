@@ -30,7 +30,14 @@ app.post("/ask-ai", async (req, res) => {
 
     const response = await client.responses.create({
       model: "gpt-5.4-nano",
-      instructions: "Tu esi augu kopšanas eksperts",
+      instructions: `Tu esi augu kopšanas eksperts. 
+Atbildi TIKAI JSON formātā. 
+Struktūra: {
+  "nosaukums": "TIKAI nosaukums ",
+  "apraksts": "Īss apraksts(viens vai divi teikumi), kas ar augu ir netā",
+  "palidziba": "vajag vai nevajag (viens vārds)",
+  "plans": ["1. diena", "2. diena", "3. diena", "4. diena"]
+}`,
       input: [
         {
           role: "user",
