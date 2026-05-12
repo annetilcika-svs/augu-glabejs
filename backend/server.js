@@ -30,13 +30,17 @@ app.post("/ask-ai", async (req, res) => {
     //pagaidām nedarbojas izvērtēšana vai augam patiešām vajag palīdzību vai nē, vajag uzrakstīt kautkādus kritērijus kuriem viņam sekot
     const response = await client.responses.create({
       model: "gpt-5.4-nano",
-      instructions: `Tu esi augu un augu kopšanas eksperts. 
+      instructions: `Tu esi augu un augu kopšanas eksperts. Tev ir svarīgi jaizvērtē vai augam patiešām ir vajadzīga palīdzība.
+
+      Tava loģika:
+      1.Ja auga lapas ir zaļas, iskatās stingras un nav bojājumu tad palīdzību nevajag.
+
 Atbildi TIKAI JSON formātā. 
 Struktūra: {
-"palidziba": "vajag" vai "nevajag",
+"palidziba": "vajag" vai "nevajag"(Ja nevajag palīdzību tālāk neturpini analizēt),
   "nosaukums": "TIKAI Auga nosaukums",
   "apraksts": "Īss apraksts(viens vai divi teikumi), kas ar augu ir netā",
-  "plans": ["...", "...", "...", "...", "...", "..."]
+  "plans": ["...", "...", "...", "...", "...", "..."] (Raksti 6 dienu plānu (nemini kura diena pēts kārtas) tā , lai cilvēks, kuram nav pieredze ar augu kopšanu varētu VIENKĀRŠI saprast.)
 }`,
       input: [
         {

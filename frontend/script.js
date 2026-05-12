@@ -22,8 +22,6 @@ dzest.addEventListener("click", dzesana);
 
 async function jauns() {
   console.log("pievienošana");
-  const saitesBilde = saite.value;
-  bilde.innerHTML = `<img src="${saitesBilde}" alt="Augs" style="max-width: 100%; max-height: 100%;">`;
 
   const atbilde = await fetch("/ask-ai", {
     method: "POST",
@@ -37,24 +35,30 @@ async function jauns() {
   const info = JSON.parse(dati.answer);
   console.log(dati.answer);
 
-  document.getElementById("problema").value = "";
-  document.getElementById("saite").value = "";
-
-  document.getElementById("auguNosaukums").innerText = info.nosaukums;
-  document.getElementById("apraksts").innerText = info.apraksts;
   const plāns = info.plans || info.diena;
 
   if (info.palidziba === "nevajag") {
     alert("Augam viss kārtībā!");
+    document.getElementById("problema").value = "";
+    document.getElementById("saite").value = "";
     return;
-  } else {
-    diena1.innerText = plāns[0] || "";
-    diena2.innerText = plāns[1] || "";
-    diena3.innerText = plāns[2] || "";
-    diena4.innerText = plāns[3] || "";
-    diena5.innerText = plāns[4] || "";
-    diena6.innerText = plāns[5] || "";
   }
+  //nosaukums, apraksts
+  document.getElementById("auguNosaukums").innerText = info.nosaukums;
+  document.getElementById("apraksts").innerText = info.apraksts;
+  //ievieto dienu plānu
+  diena1.innerText = plāns[0] || "";
+  diena2.innerText = plāns[1] || "";
+  diena3.innerText = plāns[2] || "";
+  diena4.innerText = plāns[3] || "";
+  diena5.innerText = plāns[4] || "";
+  diena6.innerText = plāns[5] || "";
+  //bilde
+  const saitesBilde = saite.value;
+  bilde.innerHTML = `<img src="${saitesBilde}" alt="Augs" style="max-width: 100%; max-height: 100%;">`;
+
+  document.getElementById("problema").value = "";
+  document.getElementById("saite").value = "";
 }
 
 function saglabat() {
