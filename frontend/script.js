@@ -35,7 +35,7 @@ async function jauns() {
   const info = JSON.parse(dati.answer);
   console.log(dati.answer);
 
-  const plāns = info.plans || info.diena;
+  const plan = info.plans || info.diena;
 
   if (info.palidziba === "nevajag") {
     alert("Augam viss kārtībā!");
@@ -47,12 +47,12 @@ async function jauns() {
   document.getElementById("auguNosaukums").innerText = info.nosaukums;
   document.getElementById("apraksts").innerText = info.apraksts;
   //ievieto dienu plānu
-  diena1.innerText = plāns[0] || "";
-  diena2.innerText = plāns[1] || "";
-  diena3.innerText = plāns[2] || "";
-  diena4.innerText = plāns[3] || "";
-  diena5.innerText = plāns[4] || "";
-  diena6.innerText = plāns[5] || "";
+  diena1.innerText = plan[0] || "";
+  diena2.innerText = plan[1] || "";
+  diena3.innerText = plan[2] || "";
+  diena4.innerText = plan[3] || "";
+  diena5.innerText = plan[4] || "";
+  diena6.innerText = plan[5] || "";
   //bilde
   const saitesBilde = saite.value;
   bilde.innerHTML = `<img src="${saitesBilde}" alt="Augs" style="max-width: 100%; max-height: 100%;">`;
@@ -63,6 +63,36 @@ async function jauns() {
 
 function saglabat() {
   console.log("saglabāt");
+  const nosaukums = auguNosaukums.innerText;
+  const aprakstaTeksts = apraksts.innerText;
+
+  const plani = `
+    1. diena: ${diena1.innerText}
+    2. diena: ${diena2.innerText}
+    3. diena: ${diena3.innerText}
+    4. diena: ${diena4.innerText}
+    5. diena: ${diena5.innerText}
+    6. diena: ${diena6.innerText}
+  `;
+
+  const fails = `
+AUGU KOPŠANAS PLĀNS
+
+Augs: ${nosaukums}
+
+Apraksts: ${aprakstaTeksts}
+
+Kopšanas soļi:
+${plani}
+  `;
+
+  var myFile = new Blob([fails], { type: "text/plain" });
+  const fileurl = URL.createObjectURL(myFile);
+  const link = document.createElement("a");
+  link.download = `${nosaukums}_kopšanas_plāns.txt`;
+  link.href = fileurl;
+  link.click();
+  URL.revokeObjectURL(fileurl);
 }
 
 function dzesana() {
