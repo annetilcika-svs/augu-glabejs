@@ -16,12 +16,23 @@ const diena4 = document.getElementById("diena4");
 const diena5 = document.getElementById("diena5");
 const diena6 = document.getElementById("diena6");
 
+const loder = document.getElementById("loder");
+
 btnPievienot.addEventListener("click", jauns);
 lejupieladet.addEventListener("click", saglabat);
 dzest.addEventListener("click", dzesana);
 
 async function jauns() {
   console.log("pievienošana");
+
+  loder.innerHTML = `
+  <div class="loader-overlay">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <p>Analizēju augu...</p>
+    </div>
+  </div>
+`;
 
   const atbilde = await fetch("/ask-ai", {
     method: "POST",
@@ -33,6 +44,7 @@ async function jauns() {
   });
   const dati = await atbilde.json();
   const info = JSON.parse(dati.answer);
+  loder.innerHTML = "";
   console.log(dati.answer);
 
   const plan = info.plans || info.diena;
