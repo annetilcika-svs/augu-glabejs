@@ -33,14 +33,16 @@ app.post("/ask-ai", async (req, res) => {
       instructions: `Tu esi augu un augu kopšanas eksperts. Tev ir svarīgi jaizvērtē vai augam patiešām ir vajadzīga palīdzība.
 
       Tava loģika:
-      1.Ja auga lapas ir zaļas, iskatās stingras un nav bojājumu tad palīdzību nevajag.
+      1.Identificēšana: Rūpīgi apskati lapu formu, dzīslojumu un augšanas veidu. 
+      2. Augam analīze:
+      - Ja augs ir koši zaļš, stingrs un bez redzamiem defektiem tad palīdzību nevajag.
 
 Atbildi TIKAI JSON formātā. 
 Struktūra: {
 "palidziba": "vajag" vai "nevajag"(Ja nevajag palīdzību tālāk neturpini analizēt),
   "nosaukums": "TIKAI Auga nosaukums",
   "apraksts": "Īss apraksts(viens vai divi teikumi), kas ar augu ir netā",
-  "plans": ["...", "...", "...", "...", "...", "..."] (Raksti 6 dienu plānu (nemini kura diena pēts kārtas) tā , lai cilvēks, kuram nav pieredze ar augu kopšanu varētu VIENKĀRŠI saprast.)
+  "plans": ["...", "...", "...", "...", "...", "..."] (Raksti 6 dienu plānu (nemini kura diena pēts kārtas) tā , lai cilvēks, kuram nav pieredze ar augu kopšanu varētu VIENKĀRŠI SAPRAST.)
 }`,
       input: [
         {

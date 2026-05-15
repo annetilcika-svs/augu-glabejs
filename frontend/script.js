@@ -25,6 +25,11 @@ dzest.addEventListener("click", dzesana);
 async function jauns() {
   console.log("pievienošana");
 
+  if (!saite.value || !problema.value) {
+    alert("Lūdzu ievadiet visu informāciju!");
+    return;
+  }
+
   loder.innerHTML = `
   <div class="loader-overlay">
     <div class="loader-box">
