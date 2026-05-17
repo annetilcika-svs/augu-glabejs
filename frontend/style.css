@@ -2,11 +2,18 @@ body {
   background-image: url("https://media.istockphoto.com/id/1190016215/vector/vector-isolated-ginkgo-illustration-element-leaf-plant-botanical-garden-foliage-black-and.jpg?s=612x612&w=0&k=20&c=ugsey2zQCt3-wHzmIB3uNCco4Qee3T3Shwysfy46OXQ=");
 }
 
+.bi-calendar-fill {
+  color: rgba(13, 110, 253);
+}
+
 #lielaKaste {
   width: 95%;
   max-width: 1400px;
   height: 90%;
   border-radius: 15px;
+  border-radius: 2;
+  border: 1.5px solid rgba(13, 110, 253); /* Melna apmale lielajai kastei */
+  overflow: hidden;
 }
 
 #kreisaKaste {
@@ -20,11 +27,12 @@ body {
   max-width: 300px;
   min-width: 120px;
   border-radius: 10px;
+  border: 1.5px solid rgba(13, 110, 253);
 }
 
 .linija {
   width: 1px;
-  background-color: #000000;
+  background-color: rgb(0, 0, 0);
   height: 100%;
 }
 

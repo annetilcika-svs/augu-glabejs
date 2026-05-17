@@ -18,6 +18,9 @@ const diena6 = document.getElementById("diena6");
 
 const loder = document.getElementById("loder");
 
+const saitesParbaude =
+  /^(data:image\/|\bhttps?:\/\/.*\.(jpg|jpeg|png|webp|gif)$)/i;
+
 btnPievienot.addEventListener("click", jauns);
 lejupieladet.addEventListener("click", saglabat);
 dzest.addEventListener("click", dzesana);
@@ -27,6 +30,12 @@ async function jauns() {
 
   if (!saite.value || !problema.value) {
     alert("Lūdzu ievadiet visu informāciju!");
+    return;
+  }
+
+  //pārbauda vai saite ir attēla vai nē
+  if (!saitesParbaude.test(saite.value.trim())) {
+    alert("Lūdzu ievadiet saiti uz īstu attēlu");
     return;
   }
 
@@ -80,8 +89,23 @@ async function jauns() {
 
 function saglabat() {
   console.log("saglabāt");
+
   const nosaukums = auguNosaukums.innerText;
   const aprakstaTeksts = apraksts.innerText;
+
+  if (
+    !diena1.innerText ||
+    !diena2.innerText ||
+    !diena3.innerText ||
+    !diena4.innerText ||
+    !diena5.innerText ||
+    !diena6.innerText ||
+    !nosaukums ||
+    !aprakstaTeksts
+  ) {
+    alert("Nav informācijas ko saglabāt");
+    return;
+  }
 
   const plani = `
     1. diena: ${diena1.innerText}
